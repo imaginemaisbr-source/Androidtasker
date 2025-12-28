@@ -4,20 +4,25 @@ plugins {
 }
 
 android {
-    namespace "com.imagine.androidtasker"
+    namespace 'com.imagine.androidtasker'
     compileSdk 34
 
     defaultConfig {
         applicationId "com.imagine.androidtasker"
-        minSdk 23
+        minSdk 24
         targetSdk 34
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug {
-            debuggable true
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
 
@@ -27,12 +32,15 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = '17'
     }
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:1.12.0"
-    implementation "androidx.activity:activity-ktx:1.8.2"
-    implementation "androidx.appcompat:appcompat:1.6.1"
+
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+
+    testImplementation 'junit:junit:4.13.2'
 }
